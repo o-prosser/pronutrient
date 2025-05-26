@@ -43,11 +43,11 @@ export async function pbkdf2(
 const HASH_ITERATIONS = 10000;
 
 export const hashPassword = async (raw: string) => {
-  const key = await pbkdf2(raw, process.env.SALT_KEY, HASH_ITERATIONS, 64);
+  const key = await pbkdf2(raw, process.env.SALT_KEY || "", HASH_ITERATIONS, 64);
   return key;
 };
 
 export const isMatchingPassword = async (raw: string, hashed: string) => {
-  const hash = await pbkdf2(raw, process.env.SALT_KEY, HASH_ITERATIONS, 64);
+  const hash = await pbkdf2(raw, process.env.SALT_KEY || "", HASH_ITERATIONS, 64);
   return hashed === hash;
 };
