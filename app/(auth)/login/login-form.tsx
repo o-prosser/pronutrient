@@ -94,15 +94,15 @@ export function LoginForm() {
                 name="email"
                 type="email"
                 placeholder="Enter your email"
-                defaultValue={state.returnedValues.email}
+                defaultValue={state.returnedValues?.email}
                 className="pl-10"
                 required
               />
             </div>
-            {state.errors.email?.length || 0 > 0 ? (
+            {state.errors?.email?.length || 0 > 0 ? (
               <Alert variant="destructive">
                 <AlertDescription>
-                  {state.errors.email?.join(", ")}
+                  {state.errors?.email?.join(", ")}
                 </AlertDescription>
               </Alert>
             ) : (
