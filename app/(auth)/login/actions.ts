@@ -43,7 +43,7 @@ export const loginAction = async (prevState: any, formData: FormData) => {
     });
 
     await createSession(session.id);
-  } catch (error) {
+  } catch (_) {
     return {
       errors: {
         email: ["Incorrect email or password."],

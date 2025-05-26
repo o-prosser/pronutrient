@@ -31,7 +31,7 @@ export const decodeUserSession = async (jwt: string) => {
 
     const { sessionId } = payload;
     return sessionId;
-  } catch (error) {
+  } catch (_) {
     return null;
   }
 };

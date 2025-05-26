@@ -80,7 +80,7 @@ const BarcodeScanner = ({
         // Stop camera stream
         stream.getTracks().forEach((track) => track.stop());
       }, 3000);
-    } catch (error) {
+    } catch (_) {
       setScanError("Camera access denied or not available");
       setIsScanning(false);
     }
@@ -203,8 +203,8 @@ export default function Component() {
     unit: "serving",
   });
 
-  const [isLoadingProduct, setIsLoadingProduct] = useState(false);
-  const [scanError, setScanError] = useState("");
+  const [, setIsLoadingProduct] = useState(false);
+  const [, setScanError] = useState("");
 
   // Update date when URL changes
   useEffect(() => {
@@ -328,7 +328,7 @@ export default function Component() {
       } else {
         setScanError("Product not found. Please try manual entry.");
       }
-    } catch (error) {
+    } catch (_) {
       setScanError("Failed to fetch product data. Please try again.");
     } finally {
       setIsLoadingProduct(false);

@@ -36,7 +36,7 @@ export function ForgotPasswordForm() {
       // Mock password reset logic
       console.log("Sending password reset email to:", email);
       setIsSubmitted(true);
-    } catch (err) {
+    } catch (_) {
       setError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
