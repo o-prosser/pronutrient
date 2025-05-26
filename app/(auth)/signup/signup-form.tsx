@@ -91,7 +91,7 @@ export function SignupForm() {
                 type="text"
                 name="name"
                 placeholder="Enter your full name"
-                defaultValue={state.returnedValues.name}
+                defaultValue={state.returnedValues?.name}
                 className="pl-10"
                 required
               />
@@ -116,7 +116,7 @@ export function SignupForm() {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
-                defaultValue={state.returnedValues.email}
+                defaultValue={state.returnedValues?.email}
                 className="pl-10"
                 required
               />
