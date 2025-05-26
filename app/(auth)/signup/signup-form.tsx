@@ -99,7 +99,7 @@ export function SignupForm() {
             {state.errors?.name?.length || 0 > 0 ? (
               <Alert variant="destructive">
                 <AlertDescription>
-                  {state.errors.name?.join(", ")}
+                  {state.errors?.name?.join(", ")}
                 </AlertDescription>
               </Alert>
             ) : (
@@ -124,7 +124,7 @@ export function SignupForm() {
             {state.errors?.email?.length || 0 > 0 ? (
               <Alert variant="destructive">
                 <AlertDescription>
-                  {state.errors.email?.join(", ")}
+                  {state.errors?.email?.join(", ")}
                 </AlertDescription>
               </Alert>
             ) : (
@@ -161,7 +161,7 @@ export function SignupForm() {
             {state.errors?.password?.length || 0 > 0 ? (
               <Alert variant="destructive">
                 <AlertDescription>
-                  {state.errors.password?.join(", ")}
+                  {state.errors?.password?.join(", ")}
                 </AlertDescription>
               </Alert>
             ) : (
