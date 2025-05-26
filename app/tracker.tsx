@@ -80,7 +80,8 @@ const BarcodeScanner = ({
         // Stop camera stream
         stream.getTracks().forEach((track) => track.stop());
       }, 3000);
-    } catch (_) {
+    } catch (error) {
+      console.log(error)
       setScanError("Camera access denied or not available");
       setIsScanning(false);
     }
@@ -328,7 +329,8 @@ export default function Component() {
       } else {
         setScanError("Product not found. Please try manual entry.");
       }
-    } catch (_) {
+    } catch (error) {
+      console.log(error);
       setScanError("Failed to fetch product data. Please try again.");
     } finally {
       setIsLoadingProduct(false);
