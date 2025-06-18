@@ -83,6 +83,8 @@ const ScanMeal = () => {
             />
           </div>
         )}
+
+        {error}
       </DialogContent>
     </Dialog>
   );
