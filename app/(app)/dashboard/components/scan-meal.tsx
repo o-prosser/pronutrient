@@ -21,7 +21,7 @@ const ScanMeal = () => {
           width={500}
           height={500}
           onUpdate={(err, result) => {
-            // @ts-expect-error
+            // @ts-expect-error skfddpsknfdkf
             if (result) setData(result.text);
             else setData("Not Found");
           }}
