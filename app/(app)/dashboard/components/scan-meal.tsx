@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BarcodeScanner from "react-qr-barcode-scanner";
 import {
   Dialog,
@@ -13,6 +13,7 @@ const ScanMeal = () => {
   const [data, setData] = useState("Scanning");
   const [barcode, setBarcode] = useState('');
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!barcode) return;
