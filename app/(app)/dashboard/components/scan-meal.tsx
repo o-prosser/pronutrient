@@ -58,6 +58,7 @@ const ScanMeal = () => {
             if (result) {
               // @ts-expect-error skfddpsknfdkf
               setData(result.text);
+              // @ts-expect-error skfddpsknfdkf
               setBarcode(result.text);
             } else setData("Not Found");
           }}
