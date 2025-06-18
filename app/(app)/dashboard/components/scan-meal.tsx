@@ -11,7 +11,7 @@ import {
 
 const ScanMeal = () => {
   const [data, setData] = useState("Scanning");
-  const [barcode, setBarcode] = useState(barcode);
+  const [barcode, setBarcode] = useState('');
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
