@@ -7,7 +7,7 @@ const Navigator = ({
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const currentDate = searchParams.date
-    ? new Date(searchParams.date)
+    ? new Date(searchParams.date.toString())
     : new Date();
 
   return (
