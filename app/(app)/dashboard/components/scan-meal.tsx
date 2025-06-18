@@ -74,16 +74,16 @@ const ScanMeal = () => {
 
         {product && (
           <div style={{ marginTop: "20px" }}>
-            {/* @ts-expect-error */}
+            {/* @ts-expect-error jjkjkjkj */}
             <h3>{product.product_name}</h3>
-            {/* @ts-expect-error */}
+            {/* @ts-expect-error jkkkjk */}
             <p>Calories: {product.nutriments["energy-kcal"]} kcal</p>
-            {/* @ts-expect-error */}
+            {/* @ts-expect-error  kkkijkjk */}
             <p>Quantity: {product.quantity}</p>
             <img
-              /* @ts-expect-error */
+              /* @ts-expect-error jkjkjkj */
               src={product.image_url}
-              /* @ts-expect-error */
+              /* @ts-expect-error jkjkjkj */
               alt={product.product_name}
               width="150"
             />
