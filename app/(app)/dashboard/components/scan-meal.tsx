@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -13,7 +11,7 @@ import {
 
 const ScanMeal = () => {
   const [data, setData] = useState("Scanning");
-  const [barcode, setBarcode] = useState('');
+  const [barcode, setBarcode] = useState("");
   const [product, setProduct] = useState(null);
   const [error, setError] = useState("");
 
@@ -76,11 +74,16 @@ const ScanMeal = () => {
 
         {product && (
           <div style={{ marginTop: "20px" }}>
+            {/* @ts-expect-error */}
             <h3>{product.product_name}</h3>
+            {/* @ts-expect-error */}
             <p>Calories: {product.nutriments["energy-kcal"]} kcal</p>
+            {/* @ts-expect-error */}
             <p>Quantity: {product.quantity}</p>
             <img
+              /* @ts-expect-error */
               src={product.image_url}
+              /* @ts-expect-error */
               alt={product.product_name}
               width="150"
             />
