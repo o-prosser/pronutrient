@@ -60,6 +60,8 @@ const ScanMeal = ({ date }: { date: Date }) => {
     };
   }>(null);
 
+  console.log(error);
+
   useEffect(() => {
     if (!barcode) return;
 
@@ -86,7 +88,7 @@ const ScanMeal = ({ date }: { date: Date }) => {
     fetchProduct();
   }, [barcode]);
 
-  const [state, formAction] = useActionState(addRecordAction, initialState);
+  const [, formAction] = useActionState(addRecordAction, initialState);
 
   return (
     <Dialog>
