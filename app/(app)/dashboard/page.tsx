@@ -1,5 +1,7 @@
+import db from "@/lib/db";
 import Navigator from "./components/navigator";
 import ScanMeal from "./components/scan-meal";
+import { getSession } from "@/lib/auth";
 
 const DashboardPage = async ({
   searchParams,
@@ -10,6 +12,14 @@ const DashboardPage = async ({
   const currentDate = awaitedSearchParams.date
     ? new Date(awaitedSearchParams.date.toString())
     : new Date();
+
+  const session = await getSession();
+  if (!session) throw new Error("Unauthenticated");
+
+  const records = await db.query.recordsTable.findMany({
+    where: (fields, { eq, and }) =>
+      and(eq(fields.date, currentDate), eq(fields.userId, session.user.id)),
+  });
 
   return (
     <>
@@ -41,16 +51,31 @@ const DashboardPage = async ({
           </div>
 
           <div className="divide-y divide-zinc-200 mx-4">
-            <div className="flex py-2 items-center">
-              <div className="flex-1 pr-8">
-                <p className="line-clamp-1">
-                  Graham's The Family Dairy Cottage Cheese Natural
-                </p>
-                <p className="text-zinc-400 text-sm">60g serving</p>
-              </div>
-              <span className="text-sm">62</span>
-              <span className="text-sm w-14 text-right">7.2</span>
-            </div>
+            {records
+              .filter((record) => record.meal === category)
+              .map((record, key) => (
+                <div key={key} className="flex py-2 items-center">
+                  <div className="flex-1 pr-8">
+                    <p className="line-clamp-1">{record.name}</p>
+                    <p className="text-zinc-400 text-sm">
+                      {parseFloat(record.servings)} &times;{" "}
+                      {parseFloat(record.servingSize)}g serving
+                    </p>
+                  </div>
+                  <span className="text-sm">
+                    {record.energy !== null
+                      ? parseFloat(record.energy) *
+                        parseFloat(record.servings || "1")
+                      : ""}
+                  </span>
+                  <span className="text-sm w-14 text-right">
+                    {record.protein !== null
+                      ? parseFloat(record.protein) *
+                        parseFloat(record.servings || "1")
+                      : ""}
+                  </span>
+                </div>
+              ))}
           </div>
         </section>
       ))}
