@@ -6,14 +6,19 @@ const DashboardPage = async ({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
+  const awaitedSearchParams = await searchParams;
+  const currentDate = awaitedSearchParams.date
+    ? new Date(awaitedSearchParams.date.toString())
+    : new Date();
+
   return (
     <>
       {/* <!-- Secondary tab bar for date selection --> */}
-      <Navigator searchParams={await searchParams} />
+      <Navigator searchParams={awaitedSearchParams} />
 
       <section className="pt-16">
         <div className="flex px-4 gap-2">
-          <ScanMeal />
+          <ScanMeal date={currentDate} />
           <input
             type="text"
             className="flex h-9 flex-1 min-w-0 rounded-md border bg-transparent px-3 py-1 text-sm shadow-xs border-zinc-200 placeholder:text-zinc-700"
