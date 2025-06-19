@@ -27,7 +27,7 @@ const DashboardPage = async ({
       {/* <!-- Secondary tab bar for date selection --> */}
       <Navigator searchParams={awaitedSearchParams} />
 
-      <section className="pt-16">
+      <section className="pt-16 standalone:mt-header-inset">
         <InstallPrompt />
         <div className="flex px-4 gap-2">
           <ScanMeal date={currentDate} />

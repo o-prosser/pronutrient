@@ -2,10 +2,12 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-/* 
-@theme {
-  --breakpoint-standalone: dispal
-} */
+
+@custom-variant standalone {
+  @media (display-mode: standalone) {
+    @slot;
+  }
+}
 
 @theme inline {
   --color-background: var(--background);
@@ -45,6 +47,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --spacing-header-inset: env(safe-area-inset-top);
 }
 
 :root {
