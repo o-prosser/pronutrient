@@ -3,6 +3,7 @@
 import { recordsTable } from "@/drizzle/schema/records";
 import { getSession } from "@/lib/auth";
 import db from "@/lib/db";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -67,6 +68,14 @@ export const addRecordAction = async (prevState: any, formData: FormData) => {
       },
     };
   }
+
+  redirect("/dashboard");
+};
+
+export const setInstallPromptAction = async () => {
+  const cookieStore = await cookies();
+
+  cookieStore.set("installPrompt", "shown");
 
   redirect("/dashboard");
 };

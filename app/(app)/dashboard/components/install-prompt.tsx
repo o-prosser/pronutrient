@@ -1,6 +1,14 @@
 "use client";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
+import { setInstallPromptAction } from "../actions";
 
 export function InstallPrompt() {
   const [isIOS, setIsIOS] = useState(false);
@@ -19,24 +27,32 @@ export function InstallPrompt() {
   }
 
   return (
-    <div>
-      <h3>Install App</h3>
-      <button>Add to Home Screen</button>
-      {isIOS && (
-        <p>
-          To install this app on your iOS device, tap the share button
-          <span role="img" aria-label="share icon">
-            {" "}
-            ⎋{" "}
-          </span>
-          and then "Add to Home Screen"
-          <span role="img" aria-label="plus icon">
-            {" "}
-            ➕{" "}
-          </span>
-          .
-        </p>
-      )}
-    </div>
+    <>
+      <Dialog
+        defaultOpen
+        onOpenChange={async () => {
+          await setInstallPromptAction();
+        }}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Install app</DialogTitle>
+            <DialogDescription>
+              To install this app on your iOS device, tap the share button
+              <span role="img" aria-label="share icon">
+                {" "}
+                ⎋{" "}
+              </span>
+              and then "Add to Home Screen"
+              <span role="img" aria-label="plus icon">
+                {" "}
+                ➕{" "}
+              </span>
+              .
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

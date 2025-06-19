@@ -3,6 +3,7 @@ import Navigator from "./components/navigator";
 import ScanMeal from "./components/scan-meal";
 import { getSession } from "@/lib/auth";
 import { InstallPrompt } from "./components/install-prompt";
+import { cookies } from "next/headers";
 
 const DashboardPage = async ({
   searchParams,
@@ -22,13 +23,16 @@ const DashboardPage = async ({
       and(eq(fields.date, currentDate), eq(fields.userId, session.user.id)),
   });
 
+  const cookieStore = await cookies();
+  const installPromptCookie = cookieStore.get("installPrompt");
   return (
     <>
+      {installPromptCookie?.value ? "" : <InstallPrompt />}
+
       {/* <!-- Secondary tab bar for date selection --> */}
       <Navigator searchParams={awaitedSearchParams} />
 
       <section className="pt-16 standalone:mt-header-inset">
-        <InstallPrompt />
         <div className="flex px-4 gap-2">
           <ScanMeal date={currentDate} />
           <input
