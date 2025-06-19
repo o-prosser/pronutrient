@@ -2,6 +2,7 @@ import db from "@/lib/db";
 import Navigator from "./components/navigator";
 import ScanMeal from "./components/scan-meal";
 import { getSession } from "@/lib/auth";
+import { InstallPrompt } from "./components/install-prompt";
 
 const DashboardPage = async ({
   searchParams,
@@ -27,6 +28,7 @@ const DashboardPage = async ({
       <Navigator searchParams={awaitedSearchParams} />
 
       <section className="pt-16">
+        <InstallPrompt />
         <div className="flex px-4 gap-2">
           <ScanMeal date={currentDate} />
           <input
