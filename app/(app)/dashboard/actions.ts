@@ -36,24 +36,26 @@ export const addRecordAction = async (prevState: any, formData: FormData) => {
   if (!session) throw new Error("Unauthenticated");
 
   try {
-    const record = await db.insert(recordsTable).values({
+    const insertData: typeof recordsTable.$inferInsert = {
       barcode: fields.data.barcode,
       name: fields.data.name,
       imageUrl: fields.data.imageUrl,
-      servingSize: parseFloat(fields.data.servingSize),
-      servings: parseFloat(fields.data.servings),
-      carbohydrates: parseFloat(fields.data.carbohydrates),
-      energy: parseFloat(fields.data.energy),
-      fat: parseFloat(fields.data.fat),
-      fiber: parseFloat(fields.data.fiber),
-      protein: parseFloat(fields.data.protein),
-      salt: parseFloat(fields.data.salt),
-      sugars: parseFloat(fields.data.sugars),
-      saturatedFat: parseFloat(fields.data.saturatedFat),
+      servingSize: parseFloat(fields.data.servingSize).toString(),
+      servings: parseFloat(fields.data.servings).toString(),
+      carbohydrates: parseFloat(fields.data.carbohydrates).toString(),
+      energy: parseFloat(fields.data.energy).toString(),
+      fat: parseFloat(fields.data.fat).toString(),
+      fiber: parseFloat(fields.data.fiber).toString(),
+      protein: parseFloat(fields.data.protein).toString(),
+      salt: parseFloat(fields.data.salt).toString(),
+      sugars: parseFloat(fields.data.sugars).toString(),
+      saturatedFat: parseFloat(fields.data.saturatedFat).toString(),
       date: new Date(fields.data.date),
       meal: fields.data.meal,
       userId: session.user.id,
-    });
+    };
+
+    const record = await db.insert(recordsTable).values(insertData);
 
     if (!record) throw new Error();
   } catch (error) {
