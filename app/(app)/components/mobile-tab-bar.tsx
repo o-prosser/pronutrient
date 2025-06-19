@@ -1,6 +1,6 @@
 const MobileTabBar = () => {
   return (
-    <header className="fixed inset-x-0 top-0 flex h-16 items-center justify-center gap-2 border-b border-indigo-600/20 bg-indigo-50/50 font-semibold text-indigo-800 backdrop-blur-md [&>svg]:h-6 [&>svg]:w-6 md:hidden [@media(display-mode:standalone)]:pt-[env(safe-area-inset-top)] [@media(display-mode:standalone)]:h-[calc(4rem+env(safe-area-inset-top)]">
+    <header className="fixed inset-x-0 top-0 flex h-16 items-center justify-center gap-2 border-b border-indigo-600/20 bg-indigo-50/50 font-semibold text-indigo-800 backdrop-blur-md [&>svg]:h-6 [&>svg]:w-6 md:hidden standalone:pt-header-inset standalone:h-[calc(4rem+var(--spacing-header-inset)]">
       <svg
         viewBox="0 0 24 24"
         fill="none"
