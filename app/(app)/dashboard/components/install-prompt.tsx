@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { setInstallPromptAction } from "../actions";
 
 export function InstallPrompt() {
-  const [isIOS, setIsIOS] = useState(false);
+  const [, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
