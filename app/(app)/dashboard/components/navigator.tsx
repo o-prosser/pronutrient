@@ -11,7 +11,7 @@ const Navigator = ({
     : new Date();
 
   return (
-    <div className="fixed inset-x-0 top-16 standalone:top-[calc(4rem+var(--spacing-header-inset))] h-12 flex items-center justify-between border-b border-indigo-600/20 bg-indigo-50/50 backdrop-blur-md md:hidden">
+    <div className="fixed inset-x-0 top-16 standalone:top-[calc(4rem+var(--spacing-header-inset))] h-12 flex items-center justify-between border-b border-indigo-600/20 bg-indigo-50/50 backdrop-blur-md md:static md:border md:rounded-md">
       <Link
         href={`/dashboard?date=${format(
           subDays(currentDate, 1),

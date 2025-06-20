@@ -9,7 +9,9 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
 
       <DesktopSidebar />
 
-      <main className="min-h-dvh pt-16 pb-26">{children}</main>
+      <main className="min-h-dvh pt-16 pb-26 md:pl-84 md:pr-8 md:py-6">
+        {children}
+      </main>
 
       <MobileFooter />
     </>
